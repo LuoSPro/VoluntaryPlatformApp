@@ -1,0 +1,26 @@
+{
+  "main/tabs/home": {
+    "isFragment": true,
+    "asStarter": true,
+    "needLogin": false,
+    "pageUrl": "main/tabs/home",
+    "clazName": "com.ls.voluntaryplatformapp.ui.home.HomeFragment",
+    "id": 1400354286
+  },
+  "main/tabs/action": {
+    "isFragment": true,
+    "asStarter": true,
+    "needLogin": false,
+    "pageUrl": "main/tabs/action",
+    "clazName": "com.ls.voluntaryplatformapp.ui.action.ActionFragment",
+    "id": 218923602
+  },
+  "main/tabs/my": {
+    "isFragment": true,
+    "asStarter": true,
+    "needLogin": true,
+    "pageUrl": "main/tabs/my",
+    "clazName": "com.ls.voluntaryplatformapp.ui.my.MyFragment",
+    "id": 721871694
+  }
+}

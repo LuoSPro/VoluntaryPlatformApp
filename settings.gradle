@@ -1,0 +1,5 @@
+rootProject.name='VoluntaryPlatformApp'
+include ':app'
+include ':libnavcompiler'
+include ':libnavannotation'
+include ':libcommon'
