@@ -50,6 +50,8 @@ dependencies {
     implementation project(":libnavannotation")
     /*编译*/
     annotationProcessor project(":libnavcompiler")
+    /*okhttp请求框架 model的封装*/
+    implementation project(':libnetwork')
     /*公共类model的封装*/
     implementation project(':libcommon')
     /*解析json*/
