@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">VoluntaryPlatformApp</string>
+    <string name="text_login_welcome">欢迎登录</string>
+    <string name="text_register">立即注册</string>
+    <string name="text_forget_pw">忘记密码</string>
+    <string name="text_account">账号</string>
+    <string name="text_pw">密码</string>
+    <string name="text_home_search_hint">搜索</string>
+    <string name="text_home_item_date_interval">至</string>
+    <string name="text_action_tv_title">我的志愿活动</string>
+    <string name="mine_tv_title">个人中心</string>
 </resources>

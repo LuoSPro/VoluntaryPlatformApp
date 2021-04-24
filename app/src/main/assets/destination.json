@@ -1,7 +1,7 @@
 {
   "main/tabs/home": {
     "isFragment": true,
-    "asStarter": true,
+    "asStarter": false,
     "needLogin": false,
     "pageUrl": "main/tabs/home",
     "clazName": "com.ls.voluntaryplatformapp.ui.home.HomeFragment",
@@ -17,7 +17,7 @@
   },
   "main/tabs/my": {
     "isFragment": true,
-    "asStarter": true,
+    "asStarter": false,
     "needLogin": true,
     "pageUrl": "main/tabs/my",
     "clazName": "com.ls.voluntaryplatformapp.ui.my.MyFragment",

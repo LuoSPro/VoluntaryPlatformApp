@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.ls.libcommon.global.AppGlobals;
+import com.ls.voluntaryplatformapp.model.ActionTab;
 import com.ls.voluntaryplatformapp.model.BottomBar;
 import com.ls.voluntaryplatformapp.model.Destination;
 
@@ -12,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class AppConfig {
@@ -19,6 +22,8 @@ public class AppConfig {
     private static HashMap<String, Destination> sDestConfig;
 
     private static BottomBar sBottomBar;
+
+    private static ActionTab sActionTab;
 
     public static HashMap<String, Destination> getDestConfig() {
         if (sDestConfig == null){
@@ -35,6 +40,20 @@ public class AppConfig {
             sBottomBar = JSON.parseObject(content,BottomBar.class);
         }
         return sBottomBar;
+    }
+
+    public static ActionTab getActionTab(){
+        if (sActionTab == null){
+            String content = parseFile("action_tabs_config.json");
+            sActionTab = JSON.parseObject(content,ActionTab.class);
+            Collections.sort(sActionTab.getTabs(), new Comparator<ActionTab.Tabs>() {
+                @Override
+                public int compare(ActionTab.Tabs o1, ActionTab.Tabs o2) {
+                    return o1.getIndex() < o2.getIndex() ? -1 : 1;
+                }
+            });
+        }
+        return sActionTab;
     }
 
     public static String parseFile(String fileName) {

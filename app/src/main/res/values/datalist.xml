@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="school_list">
+        <item>四川师范大学</item>
+        <item>成都大学</item>
+    </string-array>
+
+</resources>

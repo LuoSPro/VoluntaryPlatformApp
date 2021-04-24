@@ -7,21 +7,27 @@
   "tabGravity": 0,
   "tabs": [
     {
-      "title": "图片",
+      "title": "已报名",
       "index": 0,
-      "tag": "pics",
+      "tag": "prepare",
       "enable": true
     },
     {
-      "title": "视频",
+      "title": "进行中",
       "index": 1,
-      "tag": "video",
+      "tag": "execute",
       "enable": true
     },
     {
-      "title": "文本",
-      "index": 1,
-      "tag": "text",
+      "title": "已结束",
+      "index": 2,
+      "tag": "completed",
+      "enable": true
+    },
+    {
+      "title": "已失效",
+      "index": 3,
+      "tag": "invalid",
       "enable": true
     }
   ]

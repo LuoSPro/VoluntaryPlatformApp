@@ -10,7 +10,7 @@ import com.ls.libcommon.global.AppGlobals;
  * Room数据库是通过注解的方式来实现相关的功能，在编译时通过annotationProcessor来生成一个他的实现类。
  * 这里将CacheDatabase写成一个抽象类，在运行的时候会生成一个CacheDatabase的实现类，这样我们就不用覆写RoomDatabase的相关方法了
  */
-@Database(entities = {Cache.class},version = 1,exportSchema = true)//exportSchema:导出一个json文件，里面存放数据库的数据、sql语句等信息，如果设置为true，要给其指定json文件存储的位置
+@Database(entities = {Cache.class},version = 1,exportSchema = false)//exportSchema:导出一个json文件，里面存放数据库的数据、sql语句等信息，如果设置为true，要给其指定json文件存储的位置
 public abstract class CacheDatabase extends RoomDatabase {
 
     static {//初始化

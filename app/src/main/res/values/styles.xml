@@ -1,11 +1,34 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="materialButtonStyle">@style/materialButton</item>
+    </style>
+
+    <!--解决页面启动白屏问题：因为我们点开app的时候(冷启动)，系统会fork出一个新的进程，然后等待初始的Activity加载完之后(onResume()之后)，再显示页面-->
+    <!--在onResume()之前，白屏的出现，其实是由于我们app的主题AppTheme里面的WindowBackground，即白色的-->
+    <!--所以只需要给我们的入口类Activity配置一个特殊的主题就可以了-->
+    <style name="launcher" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/app_launch_icon</item>
+    </style>
+
+    <style name="materialButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:inset">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:elevation">0dp</item>
     </style>
 
 </resources>
