@@ -26,6 +26,13 @@ public class CacheManager {
         CacheDatabase.get().getCacheDao().save(cache);
     }
 
+    public static <T> void delete(String key, T body) {
+        Cache cache = new Cache();
+        cache.key = key;
+        cache.data = toByteArray(body);
+        CacheDatabase.get().getCacheDao().delete(cache);
+    }
+
     /**
      * 读出缓存
      * @param key

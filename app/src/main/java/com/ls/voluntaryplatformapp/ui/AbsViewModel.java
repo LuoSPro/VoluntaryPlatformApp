@@ -29,7 +29,7 @@ public abstract class AbsViewModel<T> extends ViewModel {
                 .setInitialLoadSizeHint(12)//初始化时，第一次加载数据的数量
 //                .setMaxSize(100)//一般我们都不知道有多少条数据，所以这个api不常用
 //                .setEnablePlaceholders(false)//占位符,如果我们设置最大为100条数据，第一次加载时请求了10条，那么我们滑到第11条的时候，如果数据还没请求到，就会使用占位符来代替
-//                .setPrefetchDistance()//距离屏幕下边缘还有几个item的时候开始加载下一页
+                .setPrefetchDistance(0)//距离屏幕下边缘还有几个item的时候开始加载下一页(设置为0，解决只有一条数据时，多次请求后台的情况)
                 .build();
         mPageData = new LivePagedListBuilder(mFactory, mConfig)
                 .setInitialLoadKey(0)//加载初始化数据的时候需要传递的参数;

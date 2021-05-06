@@ -1,7 +1,7 @@
 {
   "main/tabs/home": {
     "isFragment": true,
-    "asStarter": false,
+    "asStarter": true,
     "needLogin": false,
     "pageUrl": "main/tabs/home",
     "clazName": "com.ls.voluntaryplatformapp.ui.home.HomeFragment",
@@ -9,8 +9,8 @@
   },
   "main/tabs/action": {
     "isFragment": true,
-    "asStarter": true,
-    "needLogin": false,
+    "asStarter": false,
+    "needLogin": true,
     "pageUrl": "main/tabs/action",
     "clazName": "com.ls.voluntaryplatformapp.ui.action.ActionFragment",
     "id": 218923602

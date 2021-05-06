@@ -147,4 +147,11 @@ public abstract class AbsListFragment<T,M extends AbsViewModel<T>> extends Fragm
      * 因为涉及到分页加载，所以这里要使用 PagedListAdapter
      */
     public abstract PagedListAdapter<T, RecyclerView.ViewHolder> getAdapter();
+
+    /**
+     * 将根View传出去，方便外界做界面合并
+     */
+    public View getRootView(){
+        return binding.getRoot();
+    }
 }

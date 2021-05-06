@@ -13,12 +13,12 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ls.libcommon.utils.StatusBar;
 import com.ls.voluntaryplatformapp.model.Destination;
 import com.ls.voluntaryplatformapp.model.User;
 import com.ls.voluntaryplatformapp.ui.login.UserManager;
 import com.ls.voluntaryplatformapp.utils.AppConfig;
 import com.ls.voluntaryplatformapp.utils.NavGraphBuilder;
-import com.ls.voluntaryplatformapp.utils.StatusBar;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -82,5 +82,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         //返回true表示被选中，就会有一个上下浮动的效果
         //根据item的title是否为null，来决定返回值
         return TextUtils.isEmpty(item.getTitle());
+    }
+
+    /**
+     * 拦截返回按钮事件：
+     * 判断当前Fragment的id是否是首页，如果是则退出，不是则返回到首页
+     */
+    @Override
+    public void onBackPressed() {
+
+        //当前正在显示的页面destinationId
+        int currentPageId = mNavController.getCurrentDestination().getId();
+
+        //APP页面路导航结构图  首页的destinationId
+        int homeDestId = mNavController.getGraph().getStartDestination();
+
+        //如果当前正在显示的页面不是首页，而我们点击了返回键，则拦截。
+        if (currentPageId != homeDestId) {
+            mNavView.setSelectedItemId(homeDestId);
+            return;
+        }
+
+        //否则 finish，此处不宜调用onBackPressed。因为navigation会操作回退栈,切换到之前显示的页面。
+        finish();
     }
 }

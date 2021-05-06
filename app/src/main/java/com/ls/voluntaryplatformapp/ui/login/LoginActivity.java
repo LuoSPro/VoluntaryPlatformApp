@@ -1,7 +1,6 @@
 package com.ls.voluntaryplatformapp.ui.login;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,12 +9,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.ViewDataBinding;
 
+import com.google.gson.Gson;
+import com.ls.libcommon.utils.StatusBar;
 import com.ls.libnetwork.ApiResponse;
 import com.ls.libnetwork.ApiService;
 import com.ls.libnetwork.JsonCallback;
 import com.ls.voluntaryplatformapp.R;
-import com.ls.voluntaryplatformapp.model.User;
-import com.ls.voluntaryplatformapp.utils.StatusBar;
+import com.ls.voluntaryplatformapp.model.LoginBean;
+import com.ls.voluntaryplatformapp.model.LoginBody;
+import com.ls.voluntaryplatformapp.model.Student;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -55,15 +57,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void login(String account, String password) {
-        ApiService.post("/school/login")
-                .addParam("account",account)
-                .addParam("password",password)
-                .execute(new JsonCallback<User>() {
+        LoginBody loginBody = new LoginBody("zxc", "zixingc");
+        String json = new Gson().toJson(loginBody);
+        ApiService.post("/student/login")
+                .addJsonBody(json)
+                .execute(new JsonCallback<LoginBean>() {
                     @Override
-                    public void onSuccess(ApiResponse<User> response) {
+                    public void onSuccess(ApiResponse<LoginBean> response) {
                         if (response.body != null){
-                            UserManager.get().save(response.body);
-                            finish();
+                            //拿到token，在缓存用户信息
+                            UserManager.get().saveToken(response.body.getAccessToken());
+                            getUserInfo();
                         }else{
                             runOnUiThread(new Runnable() {
                                 @Override
@@ -75,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                     @Override
-                    public void onError(ApiResponse<User> response) {
+                    public void onError(ApiResponse<LoginBean> response) {
                         super.onError(response);
                         runOnUiThread(new Runnable() {
                             @Override
@@ -86,7 +90,44 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                     @Override
-                    public void onCacheSuccess(ApiResponse<User> response) {
+                    public void onCacheSuccess(ApiResponse<LoginBean> response) {
+                        super.onCacheSuccess(response);
+                    }
+                });
+    }
+
+    private void getUserInfo() {
+        ApiService.get("/student/info")
+                .addHeader("Authorization", "Bearer ".concat(UserManager.get().getAccessToken()))
+                .execute(new JsonCallback<Student>() {
+                    @Override
+                    public void onSuccess(ApiResponse<Student> response) {
+                        if (response.body != null) {
+                            UserManager.get().save(response.body);
+                            finish();
+                        } else {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(), "登录失败,msg:" + response.message, Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onError(ApiResponse<Student> response) {
+                        super.onError(response);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "登陆失败,msg:" + response.message, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCacheSuccess(ApiResponse<Student> response) {
                         super.onCacheSuccess(response);
                     }
                 });

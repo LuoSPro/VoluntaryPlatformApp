@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/register_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_bg_gray">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.035"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.04"
+            app:srcCompat="@drawable/icon_left_arrow" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_register_title"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/sp_30"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.045" />
+
+        <ScrollView
+            android:id="@+id/cardView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_20"
+            android:layout_marginTop="24dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/register_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dp_10"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/register_et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:hint="@string/text_register_email_hint" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50">
+
+                    <EditText
+                        android:id="@+id/register_et_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="number"
+                        android:layout_toStartOf="@+id/register_btn_code"
+                        android:hint="@string/text_register_tv_code_hint" />
+
+                    <TextView
+                        android:id="@+id/register_btn_code"
+                        android:layout_width="@dimen/dp_90"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/dp_20"
+                        android:gravity="center"
+                        android:clickable="true"
+                        android:text="@string/text_register_btn_send_code"
+                        android:focusable="true" />
+
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/register_et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:hint="@string/text_register_username_hint" />
+
+                <EditText
+                    android:id="@+id/register_et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:inputType="textPassword"
+                    android:hint="@string/text_register_password_hint" />
+
+                <EditText
+                    android:id="@+id/register_et_password2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:inputType="textPassword"
+                    android:hint="@string/text_register_password2_hint" />
+
+                <EditText
+                    android:id="@+id/register_et_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:inputType="phone"
+                    android:hint="@string/text_register_phone_hint" />
+
+                <EditText
+                    android:id="@+id/register_et_real_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:hint="@string/text_register_real_name_hint" />
+
+                <EditText
+                    android:id="@+id/register_et_school"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:hint="@string/text_register_school_hint" />
+
+                <EditText
+                    android:id="@+id/register_et_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:hint="@string/text_register_number_hint" />
+
+                <EditText
+                    android:id="@+id/register_et_id_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:hint="@string/text_register_id_card_hint" />
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/register_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_register_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.977" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

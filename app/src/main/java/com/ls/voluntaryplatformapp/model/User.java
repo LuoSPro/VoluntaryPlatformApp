@@ -7,6 +7,7 @@ public class User implements Serializable {
     private Long id;
     private String tokenKey;
     private Long expiresTime;
+    private boolean isStudent = true;
 
     public Long getId() {
         return id;
@@ -30,5 +31,13 @@ public class User implements Serializable {
 
     public void setExpiresTime(Long expiresTime) {
         this.expiresTime = expiresTime;
+    }
+
+    public boolean isStudent() {
+        return isStudent;
+    }
+
+    public void setStudent(boolean student) {
+        isStudent = student;
     }
 }

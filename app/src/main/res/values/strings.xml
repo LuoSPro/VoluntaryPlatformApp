@@ -9,4 +9,25 @@
     <string name="text_home_item_date_interval">至</string>
     <string name="text_action_tv_title">我的志愿活动</string>
     <string name="mine_tv_title">个人中心</string>
+    <string name="text_mine_tv_joined_group">我参加的组织</string>
+    <string name="text_mine_tv_service_time">服务时长详情</string>
+    <string name="text_mine_tv_user_info">我的资料</string>
+    <string name="text_joined_group_tv_title">我加入的组织</string>
+    <string name="text_joined_group_btn">加入新的组织</string>
+    <string name="text_register_title">欢迎注册</string>
+    <string name="text_register_email_hint">请输入您的邮箱</string>
+    <string name="text_register_tv_code_hint">请输入验证码</string>
+    <string name="text_register_username_hint">请输入用户名</string>
+    <string name="text_register_password_hint">请输入密码</string>
+    <string name="text_register_password2_hint">请再次输入密码</string>
+    <string name="text_register_real_name_hint">请输入真实姓名</string>
+    <string name="text_register_number_hint">请输入学号</string>
+    <string name="text_register_school_hint">请输入学校</string>
+    <string name="text_register_phone_hint">请输入手机号码</string>
+    <string name="text_register_btn">立即注册</string>
+    <string name="text_email_format_error">邮箱格式有误</string>
+    <string name="text_email_waring">邮箱不能为空</string>
+    <string name="text_register_id_card_hint">请输入你的身份证</string>
+    <string name="text_register_btn_send_code">获取验证码</string>
+    <string name="text_register_code_send_success">验证码发送成功</string>
 </resources>

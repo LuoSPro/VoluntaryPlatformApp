@@ -20,7 +20,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -33,6 +35,8 @@ import okhttp3.Response;
  */
 public abstract class Request<T,R extends Request> implements Cloneable {
 
+    protected String mJsonBody;
+
     @NonNull
     @Override
     public Request clone() throws CloneNotSupportedException {
@@ -43,7 +47,7 @@ public abstract class Request<T,R extends Request> implements Cloneable {
     //对headers参数的存储
     private HashMap<String, String> headers = new HashMap<>();
     //对参数的存储，后面的object接收八种基本数据类型
-    protected HashMap<String, Object> params = new HashMap<>();
+    protected HashMap<String, Object> params = new LinkedHashMap<>();
 
     //只访问缓存，即便本地缓存不存在，也不会发起网络请求
     public static final int CACHE_ONLY = 1;
@@ -57,7 +61,7 @@ public abstract class Request<T,R extends Request> implements Cloneable {
     private String cacheKey;
     private Type mType;
     private Class mClaz;
-    private int mCacheStrategy;
+    private int mCacheStrategy = NET_ONLY;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({CACHE_ONLY,CACHE_FIRST,NET_ONLY,NET_CACHE})
@@ -66,6 +70,11 @@ public abstract class Request<T,R extends Request> implements Cloneable {
     }
     public Request(String url){//这里的url不需要服务器域名
         mUrl = url;
+    }
+
+    public R addJsonBody(String json){
+        mJsonBody = json;
+        return (R) this;
     }
 
     public R addHeader(String key,String value){
@@ -253,6 +262,10 @@ public abstract class Request<T,R extends Request> implements Cloneable {
         //构造call
         Call call = ApiService.okHttpClient.newCall(request);
         return call;
+    }
+
+    protected void addJsonBody(okhttp3.Request.Builder builder,String json){
+
     }
 
     protected abstract okhttp3.Request generateRequest(okhttp3.Request.Builder builder);

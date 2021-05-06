@@ -1,7 +1,30 @@
 package com.ls.voluntaryplatformapp.model;
 
+import android.text.TextUtils;
+
+import androidx.annotation.Nullable;
+
 public class Article {
 
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        if (obj == null || !(obj instanceof Article))
+            return false;
+        Article newArticle = (Article)obj;
+        return id == newArticle.id &&
+                TextUtils.equals(title,newArticle.title) &&
+                score == newArticle.score &&
+                status == newArticle.status &&
+                personNumber == newArticle.personNumber &&
+                totalNumber == newArticle.totalNumber &&
+                star == newArticle.star &&
+                TextUtils.equals(startTime,newArticle.startTime) &&
+                TextUtils.equals(endTime,newArticle.endTime) &&
+                TextUtils.equals(address,newArticle.address) &&
+                TextUtils.equals(subtitle,newArticle.subtitle) &&
+                TextUtils.equals(imageUrl,newArticle.imageUrl);
+    }
 
     /**
      * title : testtitle
@@ -17,6 +40,9 @@ public class Article {
      * imageUrl : www.baidu.com
      */
 
+
+
+    private int id;
     private String title;
     private int score;
     private int status;
@@ -28,6 +54,14 @@ public class Article {
     private String address;
     private String subtitle;
     private String imageUrl;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

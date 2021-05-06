@@ -38,6 +38,8 @@ public class ApiService {
     protected static okhttp3.OkHttpClient okHttpClient;
     protected static Convert sConvert;
 
+    public static boolean isRestfulStyle;
+
     /**
      * 对okHttp的一些配置进行初始化
      */

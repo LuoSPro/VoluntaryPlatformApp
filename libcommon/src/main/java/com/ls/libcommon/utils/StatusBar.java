@@ -1,19 +1,19 @@
-package com.ls.voluntaryplatformapp.utils;
+package com.ls.libcommon.utils;
 
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.CancellationSignal;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowInsetsController;
 import android.view.WindowManager;
+
 import androidx.annotation.RequiresApi;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 public class StatusBar {
-
     public static void fitSystemBar(Activity activity){
         if (Build.VERSION.SDK_INT<Build.VERSION_CODES.M){
             //Android6.0之后的版本才设置沉浸式布局
@@ -46,4 +46,23 @@ public class StatusBar {
         //为了不使页面上的文字和状态栏的文字重叠，我们还要在每个页面的根布局设置 android:fitsSystemWindows="true" 属性
     }
 
+    /**
+     * 6.0及以上的状态栏色调
+     *
+     * @param activity
+     * @param light    true:白底黑字,false:黑底白字
+     */
+    public static void lightStatusBar(Activity activity, boolean light) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+            return;
+        Window window = activity.getWindow();
+        View decorView = window.getDecorView();
+        int visibility = decorView.getSystemUiVisibility();
+        if (light) {
+            visibility |= WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS;
+        } else {
+            visibility &= ~WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS;
+        }
+        decorView.setSystemUiVisibility(visibility);
+    }
 }

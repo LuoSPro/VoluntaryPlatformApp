@@ -29,7 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@FragmentDestination(pagerUrl = "main/tabs/action",asStarter = true,needLogin = false)
+@FragmentDestination(pagerUrl = "main/tabs/action",asStarter = false,needLogin = true)
 public class ActionFragment extends Fragment {
 
     private static final String TAG = "ActionFragment";

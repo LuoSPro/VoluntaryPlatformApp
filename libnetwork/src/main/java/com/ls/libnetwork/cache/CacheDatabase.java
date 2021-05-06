@@ -19,7 +19,7 @@ public abstract class CacheDatabase extends RoomDatabase {
 //        Room.inMemoryDatabaseBuilder()
         //所以我们选择这一种实现方式
         //构建出cacheDatebase
-        sDatabase = Room.databaseBuilder(AppGlobals.getApplication(), CacheDatabase.class, "videoapp_cache")
+        sDatabase = Room.databaseBuilder(AppGlobals.getApplication(), CacheDatabase.class, "vpa_cache")
                 .allowMainThreadQueries()//是否允许在主线程进行查询
 //                .addCallback()//数据库被创建或者被打开的时候回调
 //                .setQueryExecutor()//设置查询的线程池，默认会使用ArchTaskExecutor.getIOThreadExecutor();
